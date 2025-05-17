@@ -1,11 +1,13 @@
 from ciudad.api import CiudadAPI
 from ciudad.csv_ciudad import CiudadCSV
+from ciudad.geoapify import CiudadGeoapify
 from utils.calculadora import CalculadorDistancia
 
 def main():
     print("Elija el método para obtener la información de la ciudad:")
     print("1. Usar API (requiere conexión a internet)")
     print("2. Usar archivo CSV (datos locales)")
+    print("3. Usar Geoapify (requiere conexión a internet)")
 
     opcion = input("Ingrese el número de la opción elegida: ")
 
@@ -13,6 +15,9 @@ def main():
         metodo_ciudad = CiudadAPI()
     elif opcion == '2':
         metodo_ciudad = CiudadCSV('data/worldcities.csv')
+    elif opcion == '3':
+        api_key = "70a225d5057a4c1e8ef34cfc959a0fce"
+        metodo_ciudad = CiudadGeoapify(api_key)
     else:
         print("Opción no válida.")
         return
